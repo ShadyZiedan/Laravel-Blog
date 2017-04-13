@@ -14,34 +14,22 @@
 </div>
 <div class="row">
     <div class="col-md-8"> <!-- posts -->
-        <div class="post">
-            <h2>Post title</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores commodi animi aliquam non velit doloribus dicta nobis, aliquid ex fugit sequi. Obcaecati quae molestiae voluptatibus voluptates officia atque itaque consequatur!</p>
-            <a href="#" class="btn btn-primary">Read More</a>
-        </div>
-        <hr>
+        
+        @foreach($posts as $post)
+         <div class="post">
+            <h2>{{$post->title}}</h2>
+            <p>{{substr($post->body, 0, 300)}}{{$post->body > 300 ? "...":""}}</p>
 
-        <div class="post">
-            <h2>Post title</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores commodi animi aliquam non velit doloribus dicta nobis, aliquid ex fugit sequi. Obcaecati quae molestiae voluptatibus voluptates officia atque itaque consequatur!</p>
-            <a href="#" class="btn btn-primary">Read More</a>
+            <a href="{{route('posts.show', $post->id)}}" class="btn btn-primary">Read More</a>
         </div>
-        <hr>
+        <hr>   
 
-        <div class="post">
-            <h2>Post title</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores commodi animi aliquam non velit doloribus dicta nobis, aliquid ex fugit sequi. Obcaecati quae molestiae voluptatibus voluptates officia atque itaque consequatur!</p>
-            <a href="#" class="btn btn-primary">Read More</a>
-        </div>
-        <hr>
-
-        <div class="post">
-            <h2>Post title</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores commodi animi aliquam non velit doloribus dicta nobis, aliquid ex fugit sequi. Obcaecati quae molestiae voluptatibus voluptates officia atque itaque consequatur!</p>
-            <a href="#" class="btn btn-primary">Read More</a>
-        </div>
-        <hr>
+        @endforeach
+        <div class="text-center">
+            {!! $posts->links() !!}
+        </div> 
     </div>
+    
     <div class="col-md-3 col-md-offset-1"> <!-- sidebar -->
         <div class="widget">
             <h2>Categories</h2>
